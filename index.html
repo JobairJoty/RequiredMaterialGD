@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 500px;
+            height: 100%;
+            text-align: center;
+            padding: 10px;
+            margin: 10px auto;
+            background: white;
+            box-shadow:rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border-radius: 3px;
+        }
+        button{
+            background: #EEE;
+            border: 0px;
+            padding: 5px;
+            border-radius: 10px;
+            width: 100px;
+            height: 46px;
+            opacity: 1;
+        }
+        h1{
+            width: 500px;
+            color:tomato;
+        }
+        input{
+            width: 250px;
+            height: 40px;
+            padding: 5px;
+            border-radius: 1px;
+        }
+        #input_field{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="input_field">
+        <input id="qty" type="number" placeholder="Please Enter the Quanty of Flush Tank : ">
+        <button onclick="calculate()">Calculate</button>
+    </div>
+    <div>
+        <h1 id="pp">0</h1>
+    </div>
+    <div>
+        <h1 id="mb">0</h1>
+    </div>
+    <div>
+        <h1 id="phillar">0</h1>
+    </div>
+    
+
+    <script>
+        function calculate() {
+            var quantity = parseInt(document.getElementById("qty").value);
+
+            var totalMaterial = (quantity*1400)/1000;
+            var pp = (100*totalMaterial)/110;
+            var mb = (2*totalMaterial)/110;
+            var phillar = (8*totalMaterial)/110;
+
+            var polypropaylin = document.getElementById("pp").innerHTML="<span>Required PP : </span>"+ pp +" <br><span>Total Bag : </span>"+(pp/25).toFixed(2) +" <br><span>Next Round : </span>"+Math.ceil(pp/25) ;
+
+            var masterbatch = document.getElementById("mb").innerHTML="<span>Required Master Batch : </span>" + mb +" <br><span>Total Bag : </span>"+(mb/25).toFixed(2) +" <br><span>Next Round : </span>"+Math.ceil(mb/25);
+
+            var philler = document.getElementById("phillar").innerHTML="<span>Required Phillar : </span>"+phillar +" <br><span>Total Bag : </span>"+ (phillar/25).toFixed(2) +" <br><span>Next Round : </span>"+Math.ceil(phillar/25);
+
+
+        }
+
+    </script>
+</body>
+</html>
